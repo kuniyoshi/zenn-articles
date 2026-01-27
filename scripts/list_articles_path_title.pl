@@ -8,6 +8,7 @@ use File::Spec;
 my $root = $ARGV[0] // 'articles';
 my $cwd = abs_path('.');
 my $root_path = File::Spec->catdir($cwd, $root);
+my @entries;
 
 find(
   {
@@ -37,9 +38,13 @@ find(
       close $fh;
 
       my $relative = File::Spec->abs2rel($file_path, $cwd);
-      print $relative . "\t" . $title . "\n";
+      push @entries, [$relative, $title];
     },
     no_chdir => 1,
   },
   $root_path
 );
+
+for my $entry (sort { $a->[0] cmp $b->[0] } @entries) {
+  print $entry->[0] . "\t" . $entry->[1] . "\n";
+}
