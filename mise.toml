@@ -1,0 +1,3 @@
+[tasks.update_readme]
+description = "Update README.md from articles"
+run = "scripts/update_readme.pl"
