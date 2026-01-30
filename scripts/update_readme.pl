@@ -11,10 +11,11 @@ my $root_path = File::Spec->catdir($cwd, $root);
 my $readme_path = File::Spec->catfile($cwd, 'README.md');
 my @entries;
 
-sub extract_title {
+sub extract_metadata {
   my ($file_path) = @_;
   open my $fh, '<', $file_path or return '';
   my $title = '';
+  my $published = '';
   my $in_front_matter = 0;
   while (my $line = <$fh>) {
     chomp $line;
@@ -30,11 +31,15 @@ sub extract_title {
       $title = $1;
       $title =~ s/^["']//;
       $title =~ s/["']$//;
-      last;
+    }
+    if ($line =~ /^published:\s*(.+)\s*$/) {
+      $published = $1;
+      $published =~ s/^["']//;
+      $published =~ s/["']$//;
     }
   }
   close $fh;
-  return $title;
+  return ($title, $published);
 }
 
 find(
@@ -44,8 +49,12 @@ find(
       return unless $_ =~ /\.md\z/;
       my $file_path = $File::Find::name;
       my $relative = File::Spec->abs2rel($file_path, $cwd);
-      my $title = extract_title($file_path);
-      push @entries, [$relative, $title];
+      my ($title, $published) = extract_metadata($file_path);
+      my $status = '';
+      if ($published ne '') {
+        $status = $published =~ /^(true|1|yes)$/i ? '公開' : '下書き';
+      }
+      push @entries, [$relative, $title, $status];
     },
     no_chdir => 1,
   },
@@ -57,6 +66,6 @@ find(
 open my $out, '>', $readme_path or die "Cannot write $readme_path: $!";
 print $out "# zenn-articles\n\n";
 for my $entry (@entries) {
-  print $out '| ' . $entry->[0] . ' | ' . $entry->[1] . " |\n";
+  print $out '| ' . $entry->[0] . ' | ' . $entry->[1] . ' | ' . $entry->[2] . " |\n";
 }
 close $out;
