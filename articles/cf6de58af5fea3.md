@@ -12,26 +12,16 @@ published: false
 ではシングルトンのクラス名に `The` と接頭辞しましょう。今まで、`MainController` というクラスをシングルトンで実装していたとします。
 
 ```C#
-public class MainController
-{
-    public static CreateInstance()
-    {
-    }
-}
+MainController.Instance.StartBattle();
 ```
 
 これを `TheMainController` としましょう。
 
 ```C#
-public class TheMainController
-{
-    public static CreateInstance()
-    {
-    }
-}
+TheMainController.StartBattle();
 ```
 
-そうすると何が嬉しいのか。コードを見たときにすぐにシングルトンだとわかりますね。`The` ってついているんですから。
+`MainController` はこれまでのスコープに入っている保証はありません。MainController は唐突になりやすいんです。唐突なものには `The` とつけて、読み手に唐突であることを示せます。「あれ唐突」と感じた読み手に「そうです」ということを伝えるために `The` が機能します。
 
 どうして英語では `a` とか `the` とか使い分けるのか、と考えると言及したものかどうかを明確にするためですよね。プログラマーは明確なものが好きです。`The` と接頭辞してシングルトンだと明示できるのでつけた方がいいですよね。
 
