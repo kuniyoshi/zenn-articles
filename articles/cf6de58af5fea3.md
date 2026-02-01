@@ -1,8 +1,8 @@
 ---
 title: "シングルトンクラスには `The` ってつけよう"
-emoji: "🕌"
-type: "tech" # tech: 技術記事 / idea: アイデア
-topics: []
+emoji: "📛"
+type: "tech"
+topics: ["programming", "naming"]
 published: false
 ---
 英語ではものが特定できる状況では `the` という冠詞を使いますよね。一度言及したものにも使いますし、太陽なんかは初めて言及するときでも使います。
