@@ -1,3 +1,7 @@
 [tasks.update_readme]
 description = "Update README.md from articles"
 run = "scripts/update_readme.pl"
+
+[tasks.zenn_article_new]
+description = "Create a new Zenn article"
+run = "npx zenn new:article"
