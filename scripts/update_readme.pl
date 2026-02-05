@@ -117,6 +117,12 @@ if (@pre_table) {
 }
 
 my %written;
+my @new_paths = sort grep { !exists $existing_rows{$_} } keys %entries_by_path;
+for my $path (@new_paths) {
+  my $entry = $entries_by_path{$path};
+  print $out '| ' . $entry->[0] . ' | ' . $entry->[1] . ' | ' . $entry->[2] . " |\n";
+  $written{$path} = 1;
+}
 for my $path (@existing_order) {
   my $entry = $entries_by_path{$path};
   if ($entry) {
