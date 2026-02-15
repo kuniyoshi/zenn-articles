@@ -1,7 +1,7 @@
 # zenn-articles
 
-| articles/0b0f0532799594.md |  | 下書き |
-| articles/c33a0aec7ff339.md | 開発環境2026年 | 下書き |
+| articles/0b0f0532799594.md | 自分の人生に大きな影響を与えた本 | 下書き |
+| articles/c33a0aec7ff339.md | 開発環境2026年 | 公開 |
 | articles/96129481f142da.md | コーヒーをこぼしたキーボードが直った | 下書き |
 | articles/cf6de58af5fea3.md | シングルトンクラスには `The` ってつけよう | 公開 |
 | articles/c8814c15557619.md | プログラマーとしてのこれまでを振り返る | 公開 |
