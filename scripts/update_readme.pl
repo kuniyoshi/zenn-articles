@@ -16,6 +16,8 @@ my @pre_table;
 my @post_table;
 my $has_table = 0;
 my $has_pre_table = 0;
+my $table_header = '| 記事ファイル | タイトル | 状態 |';
+my $table_separator = '| -------------------------- | ---------- | ------ |';
 
 sub extract_metadata {
   my ($file_path) = @_;
@@ -62,6 +64,8 @@ sub parse_table_line {
   return unless @cols >= 3;
   my ($path, $title, $status) = @cols[0,1,2];
   return if $path eq '';
+  return if $path eq '記事ファイル';
+  return if $path =~ /^-+$/;
   return ($path, $title, $status);
 }
 
@@ -115,6 +119,9 @@ if (@pre_table) {
 } else {
   print $out "# zenn-articles\n\n" unless $has_table;
 }
+
+print $out $table_header . "\n";
+print $out $table_separator . "\n";
 
 my %written;
 my @new_paths = sort grep { !exists $existing_rows{$_} } keys %entries_by_path;
