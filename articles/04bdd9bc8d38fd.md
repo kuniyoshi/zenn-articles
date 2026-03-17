@@ -1,7 +1,7 @@
 ---
-title: "日本語の差分表示を改善"
-emoji: "🇯🇵"
+title: "DI コンテナってシングルトンマネージャーでしょ"
+emoji: "⤵️"
 type: "tech"
-topics: ["git", "diff"]
+topics: ["di", "game"]
 published: false
 ---
