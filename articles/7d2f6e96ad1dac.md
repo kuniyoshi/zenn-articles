@@ -3,11 +3,11 @@ title: "filter-map でコードの意図を明確にしよう"
 emoji: "🕰️"
 type: "tech"
 topics: ["TypeScript"]
-published: false
+published: true
 ---
 私は filter-map によるコーディングを好みます。
 
-じゃない方は for-of です。
+じゃない方は for-of です。たとえば次のような具合です。
 
 ```TypeScript
 function getEnemy(_id: number): {name: string; hp: number} {
@@ -41,7 +41,7 @@ const enemies = ids
 for-of の場合、読むときに次のようなデメリットがあります。
 
 - enemies の宣言を見たときに、このあと何が起きるのかとワーキングメモリに入れておかないといけません。空配列のままではないはずですからね
-- for と始まったときにこのあと何が起きるのか、と注意力を必要とします。for-of はいろいろなことをするために使われるからです
+- for と始まったときにこの中で何が起きるのか、と注意力を必要とします。for-of はいろいろなことをするために使われるからです
 
 また for-of の場合は複数の意図を入れ込まれやすいです。totalHp が欲しいとなったときには次のように書かれると思います。
 
@@ -68,6 +68,6 @@ const totalHp = enemies.reduce((acc, enemy) => acc + enemy.hp, 0);
 
 totalHp が const になったため値の変化を追う必要がなくなりました。
 
-for-of の場合は覚えておくことが多く、また、ブロック内部で何が行われているか注意深く見なくてはいけません。
+for-of の場合はコードを理解する過程で覚えておくことが多く、また、ブロック内部で何が行われているか注意深く見なくてはいけません。
 
 filter-map の場合は、enemies 宣言の時点で、「この数行は enemies のためのコードだな」とわかります。enemies の生成に興味がない場合はコードを読むのを飛ばすことができます。対して for-of の場合はできません。ブロック内で何をしているか、確認しないとわからないためです。そういうわけで私は filter-map を好みます。

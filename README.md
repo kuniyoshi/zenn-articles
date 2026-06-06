@@ -3,7 +3,7 @@
 | 記事ファイル | タイトル | 状態 |
 | -------------------------- | ---------- | ------ |
 | articles/6fc78475d17ac7.md | 実行ループから分岐を取り除く | 下書き |
-| articles/7d2f6e96ad1dac.md | filter-map でコードの意図を明確にしよう | 下書き |
+| articles/7d2f6e96ad1dac.md | filter-map でコードの意図を明確にしよう | 公開 |
 | articles/bfdba3d99299e1.md | AI エージェントのおかげで自分用のアプリを作れるようになった | 公開 |
 | articles/34955ac5ddf99b.md | 数字は日本語で発音すると短い | 公開 |
 | articles/04bdd9bc8d38fd.md | DI コンテナってシングルトンマネージャーでしょ | 下書き |
